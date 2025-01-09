@@ -10,6 +10,7 @@ class Yatzy:
         total += d5
         return total
 
+
     @staticmethod
     def yatzy(dice):
         counts = [0] * (len(dice) + 1)
