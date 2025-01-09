@@ -1,15 +1,15 @@
 class Yatzy:
 
     @staticmethod
-    def chance(d1, d2, d3, d4, d5):
-        total = 0
-        total += d1
-        total += d2
-        total += d3
-        total += d4
-        total += d5
-        return total
-
+    def chance(dado1, dado2, dado3, dado4, dado5):
+        puntos = 0
+        puntos += dado1
+        puntos += dado2
+        puntos += dado3
+        puntos += dado4
+        puntos += dado5
+        return puntos
+    '''que refactorizamos y porque'''
 
     @staticmethod
     def yatzy(dice):
