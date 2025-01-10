@@ -11,6 +11,7 @@ class Yatzy:
        if len(set(dice)) == 1:
            return 50
        return 0
+    '''Refactorizamos toda la función eliminando todos los valores repetidos con set'''
         
     @staticmethod
     def ones(*dice):
@@ -23,6 +24,7 @@ class Yatzy:
     @staticmethod
     def threes(*dice):
         return dice.count(3) * 3
+    '''Simplificamos las tres funciones de números repetidos de unos, doses y treses con count'''    
 
     def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
         self.dice = [0] * 5
