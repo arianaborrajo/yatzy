@@ -1,3 +1,5 @@
+from src.pips import Pips
+
 class Yatzy:
 
     @staticmethod
@@ -19,42 +21,21 @@ class Yatzy:
 
     @staticmethod
     def twos(*dice):
-        return dice.count(2) *2
+        return dice.count(2) * 2
     
     @staticmethod
     def threes(*dice):
         return dice.count(3) * 3
     '''Simplificamos las tres funciones de números repetidos de unos, doses y treses con count'''    
 
-    def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
-        self.dice = [0] * 5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
+    def fours(*dice):
+        return dice.count(4) * 4
 
-    def fours(self):
-        sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4):
-                sum += 4
-        return sum
+    def fives(*dice):
+       return dice.count(5) * 5
 
-    def fives(self):
-        s = 0
-        i = 0
-        for i in range(len(self.dice)):
-            if (self.dice[i] == 5):
-                s = s + 5
-        return s
-
-    def sixes(self):
-        sum = 0
-        for at in range(len(self.dice)):
-            if (self.dice[at] == 6):
-                sum = sum + 6
-        return sum
+    def sixes(*dice):
+        return dice.count(6) * 6
 
     def score_pair(self, d1, d2, d3, d4, d5):
         counts = [0] * 6
