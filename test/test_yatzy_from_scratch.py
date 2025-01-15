@@ -133,7 +133,7 @@ def test_pair():
     assert 6 == Yatzy.score_pair(3, 3, 3, 3, 1)
     assert 0 == Yatzy.score_pair(1, 2, 3, 4, 5)
 
-@pytest.mark.pairs
+@pytest.mark.two_pair
 def test_two_pairs():
     '''
     Two pairs:
@@ -145,11 +145,11 @@ def test_two_pairs():
     # Mantengo notacion snake_case
     # El algoritmo del metodo no es optimo, es complicado e ilegible.
 
-    assert 8 == Yatzy.two_pairs(1, 1, 2, 3, 3)
-    assert 0 == Yatzy.two_pairs(1, 1, 2, 3, 4)
-    assert 6 == Yatzy.two_pairs(1, 1, 2, 2, 2)
-    assert 0 == Yatzy.two_pairs(1, 2, 3, 4, 5)
-    assert 0 == Yatzy.two_pairs(4, 4, 4, 4, 5)
+    assert 8 == Yatzy.two_pair(1, 1, 2, 3, 3)
+    assert 0 == Yatzy.two_pair(1, 1, 2, 3, 4)
+    assert 6 == Yatzy.two_pair(1, 1, 2, 2, 2)
+    assert 0 == Yatzy.two_pair(1, 2, 3, 4, 5)
+    assert 0 == Yatzy.two_pair(4, 4, 4, 4, 5)
 
 
 # Three of a kind:
