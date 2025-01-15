@@ -26,7 +26,6 @@ class Yatzy:
     @staticmethod
     def threes(*dice):
         return dice.count(3) * 3
-    '''Simplificamos las tres funciones de números repetidos de unos, doses y treses con count'''    
 
     def fours(*dice):
         return dice.count(4) * 4
@@ -36,6 +35,7 @@ class Yatzy:
 
     def sixes(*dice):
         return dice.count(6) * 6
+    '''Simplificamos las seis funciones de números repetidos de los unos hasta los seises con count'''
 
     def score_pair(self, d1, d2, d3, d4, d5):
         counts = [0] * 6
