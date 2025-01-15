@@ -37,18 +37,16 @@ class Yatzy:
         return dice.count(6) * 6
     '''Simplificamos las seis funciones de números repetidos de los unos hasta los seises con count'''
 
-    def score_pair(self, d1, d2, d3, d4, d5):
-        counts = [0] * 6
-        counts[d1 - 1] += 1
-        counts[d2 - 1] += 1
-        counts[d3 - 1] += 1
-        counts[d4 - 1] += 1
-        counts[d5 - 1] += 1
-        at = 0
-        for at in range(6):
-            if (counts[6 - at - 1] == 2):
-                return (6 - at) * 2
-        return 0
+    def score_pair(*dice):
+        pair=[]
+        for num in range (1,7):
+            die = dice.count(num)
+            if die >= 2:
+               pair.append(num)
+        if pair:
+            return max(pair) * 2
+        else:
+            return 0
 
     @staticmethod
     def two_pair(d1, d2, d3, d4, d5):
