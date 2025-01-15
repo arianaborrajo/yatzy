@@ -118,7 +118,7 @@ def test_sixes():
     '''
     assert 6 == Yatzy.sixes(4, 5, 6, 4, 5)
 
-@pytest.mark.pair
+@pytest.mark.score_pair
 def test_pair():
     '''
     Pair:
@@ -127,11 +127,11 @@ def test_pair():
     # El algoritmo del metodo no es optimo, es complicado e ilegible.
     # La abstraccion, el nombre del metodo, no es adecuada
     # puesto que la categoria se llama pair.
-    assert 8 == Yatzy.pair(3, 3, 3, 4, 4)
-    assert 12 == Yatzy.pair(1, 1, 6, 2, 6)
-    assert 6 == Yatzy.pair(3, 3, 3, 4, 1)
-    assert 6 == Yatzy.pair(3, 3, 3, 3, 1)
-    assert 0 == Yatzy.pair(1, 2, 3, 4, 5)
+    assert 8 == Yatzy.score_pair(3, 3, 3, 4, 4)
+    assert 12 == Yatzy.score_pair(1, 1, 6, 2, 6)
+    assert 6 == Yatzy.score_pair(3, 3, 3, 4, 1)
+    assert 6 == Yatzy.score_pair(3, 3, 3, 3, 1)
+    assert 0 == Yatzy.score_pair(1, 2, 3, 4, 5)
 
 @pytest.mark.pairs
 def test_two_pairs():
