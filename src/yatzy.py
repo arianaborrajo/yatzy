@@ -10,9 +10,9 @@ class Yatzy:
 
     @staticmethod
     def yatzy(*dice):
-       if len(set(dice)) == 1:
-           return 50
-       return 0
+        if len(set(dice)) == 1:
+            return 50
+        return 0
     '''Refactorizamos toda la función eliminando todos los valores repetidos con set'''
         
     @staticmethod
@@ -60,90 +60,43 @@ class Yatzy:
         else:
             return 0
     @staticmethod
-    def four_of_a_kind(_1, _2, d3, d4, d5):
-        tallies = [0] * 6
-        tallies[_1 - 1] += 1
-        tallies[_2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-        for i in range(6):
-            if (tallies[i] >= 4):
-                return (i + 1) * 4
+    def four_of_a_kind(*dice):
+        veces_contadas= [0] * 6 
+        for die in dice:
+            veces_contadas[die -1] += 1
+        for num in range(6):
+            if veces_contadas [num] >= 4:
+                return (num +1) * 4
         return 0
+    
+    @staticmethod
+    def three_of_a_kind (*dice):
+        veces_contadas= [0] * 6 
+        for die in dice:
+            veces_contadas[die -1] += 1
+        for num in range(6):
+            if veces_contadas[num] >= 3:
+                return (num +1) * 3
+        return 0
+    '''Refactorizamos las funciones de pares y tríos para que sean más sostenibles'''
 
     @staticmethod
-    def three_of_a_kind(d1, d2, d3, d4, d5):
-        t = [0] * 6
-        t[d1 - 1] += 1
-        t[d2 - 1] += 1
-        t[d3 - 1] += 1
-        t[d4 - 1] += 1
-        t[d5 - 1] += 1
-        for i in range(6):
-            if (t[i] >= 3):
-                return (i + 1) * 3
-        return 0
-
-    @staticmethod
-    def smallStraight(d1, d2, d3, d4, d5):
-        tallies = [0] * 6
-        tallies[d1 - 1] += 1
-        tallies[d2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-        if (tallies[0] == 1 and
-                tallies[1] == 1 and
-                tallies[2] == 1 and
-                tallies[3] == 1 and
-                tallies[4] == 1):
+    def smallStraight(*dice):
+        if sorted(dice) == [1, 2, 3, 4, 5] or sorted(dice) == [2, 3, 4, 5, 1]:
             return 15
-        return 0
-
-    @staticmethod
-    def largeStraight(d1, d2, d3, d4, d5):
-        tallies = [0] * 6
-        tallies[d1 - 1] += 1
-        tallies[d2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-        if (tallies[1] == 1 and
-                tallies[2] == 1 and
-                tallies[3] == 1 and
-                tallies[4] == 1
-                and tallies[5] == 1):
-            return 20
-        return 0
-
-    @staticmethod
-    def fullHouse(d1, d2, d3, d4, d5):
-        tallies = []
-        _2 = False
-        i = 0
-        _2_at = 0
-        _3 = False
-        _3_at = 0
-
-        tallies = [0] * 6
-        tallies[d1 - 1] += 1
-        tallies[d2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-
-        for i in range(6):
-            if (tallies[i] == 2):
-                _2 = True
-                _2_at = i + 1
-
-        for i in range(6):
-            if (tallies[i] == 3):
-                _3 = True
-                _3_at = i + 1
-
-        if (_2 and _3):
-            return _2_at * 2 + _3_at * 3
         else:
             return 0
+
+    @staticmethod
+    def largeStraight(*dice):
+        if sorted(dice) == [2, 3, 4, 5, 6] or sorted(dice) == [6, 2, 3, 4, 5]:
+            return 20
+        else:
+            return 0
+
+    @staticmethod
+    def fullHouse(*dice):
+        counts = [dice.count(num) for num in range(1, 7)]
+        if 2 in counts and 3 in counts:
+            return (counts.index(2) + 1) * 2 + (counts.index(3) + 1) * 3
+        return 0
