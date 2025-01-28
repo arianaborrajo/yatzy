@@ -1,134 +1,64 @@
+from src.pips import Pips
+
 class Yatzy:
 
     @staticmethod
-    def chance(d1, d2, d3, d4, d5):
-        total = 0
-        total += d1
-        total += d2
-        total += d3
-        total += d4
-        total += d5
-        return total
+    def chance(*dice):
+        return sum(dice)
+    '''Unificamos las variables con el * para hacerlo mas sostenible y simplificamos 
+    el codigo utilizando sum para sumar todos los resultados a la vez'''
 
     @staticmethod
-    def yatzy(dice):
-        counts = [0] * (len(dice) + 1)
-        for die in dice:
-            counts[die - 1] += 1
-        for i in range(len(counts)):
-            if counts[i] == 5:
-                return 50
-        return 0
+    def yatzy(*dice):
+       if len(set(dice)) == 1:
+           return 50
+       return 0
+    '''Refactorizamos toda la función eliminando todos los valores repetidos con set'''
+        
+    @staticmethod
+    def ones(*dice):
+        return dice.count(1) * 1
 
     @staticmethod
-    def ones(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1):
-            sum += 1
-
-        return sum
-
+    def twos(*dice):
+        return dice.count(2) * 2
+    
     @staticmethod
-    def twos(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 2):
-            sum += 2
-        if (d2 == 2):
-            sum += 2
-        if (d3 == 2):
-            sum += 2
-        if (d4 == 2):
-            sum += 2
-        if (d5 == 2):
-            sum += 2
-        return sum
+    def threes(*dice):
+        return dice.count(3) * 3
 
-    @staticmethod
-    def threes(d1, d2, d3, d4, d5):
-        s = 0
-        if (d1 == 3):
-            s += 3
-        if (d2 == 3):
-            s += 3
-        if (d3 == 3):
-            s += 3
-        if (d4 == 3):
-            s += 3
-        if (d5 == 3):
-            s += 3
-        return s
+    def fours(*dice):
+        return dice.count(4) * 4
 
-    def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
-        self.dice = [0] * 5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
+    def fives(*dice):
+       return dice.count(5) * 5
 
-    def fours(self):
-        sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4):
-                sum += 4
-        return sum
+    def sixes(*dice):
+        return dice.count(6) * 6
+    '''Simplificamos las seis funciones de números repetidos de los unos hasta los seises con count'''
 
-    def fives(self):
-        s = 0
-        i = 0
-        for i in range(len(self.dice)):
-            if (self.dice[i] == 5):
-                s = s + 5
-        return s
-
-    def sixes(self):
-        sum = 0
-        for at in range(len(self.dice)):
-            if (self.dice[at] == 6):
-                sum = sum + 6
-        return sum
-
-    def score_pair(self, d1, d2, d3, d4, d5):
-        counts = [0] * 6
-        counts[d1 - 1] += 1
-        counts[d2 - 1] += 1
-        counts[d3 - 1] += 1
-        counts[d4 - 1] += 1
-        counts[d5 - 1] += 1
-        at = 0
-        for at in range(6):
-            if (counts[6 - at - 1] == 2):
-                return (6 - at) * 2
-        return 0
-
-    @staticmethod
-    def two_pair(d1, d2, d3, d4, d5):
-        counts = [0] * 6
-        counts[d1 - 1] += 1
-        counts[d2 - 1] += 1
-        counts[d3 - 1] += 1
-        counts[d4 - 1] += 1
-        counts[d5 - 1] += 1
-        n = 0
-        score = 0
-        for i in range(6):
-            if (counts[6 - i - 1] >= 2):
-                n = n + 1
-                score += (6 - i)
-
-        if (n == 2):
-            return score * 2
+    def score_pair(*dice):
+        pair=[]
+        for num in range (1,7):
+            die = dice.count(num)
+            if die >= 2:
+               pair.append(num)
+        if pair:
+            return max(pair) * 2
         else:
             return 0
 
+    @staticmethod
+    def two_pair(*dice):
+        pair=[]
+        for num in range (1,7):
+            die = dice.count(num)
+            if die >= 2:
+               pair.append(num)
+        if len(pair) == 2:
+            return sum(pair) * 2
+        else:
+            return 0
     @staticmethod
     def four_of_a_kind(_1, _2, d3, d4, d5):
         tallies = [0] * 6
